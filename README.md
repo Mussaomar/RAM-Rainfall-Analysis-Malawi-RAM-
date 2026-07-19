@@ -4,7 +4,7 @@ Rainfall extraction, SPI/RAI/PCI indices, and trend analysis for
 Malawi, using CHIRPS Daily precipitation via the Google Earth Engine
 Python API.
 
-## What it does
+ What it does
 
 Point extraction,pick a point on the map (or type lon/lat),
 get a daily/monthly/annual CHIRPS rainfall time series, export to CSV.
@@ -70,7 +70,7 @@ then drag the resulting file into QGIS once it lands.
 
 Earth Engine's `Image.clip()` masks pixels outside the AOI *on the
 server*, but that mask doesn't reliably survive the `getDownloadURL`
-GeoTIFF round-trip as a real GDAL NoData value — the file that comes
+GeoTIFF round-trip as a real GDAL NoData value ,the file that comes
 back is a plain rectangular grid covering the AOI's bounding box, and
 QGIS has no way to know which pixels are "outside" your district or
 basin, so it draws the whole rectangle (this is exactly what you'd see
@@ -81,7 +81,7 @@ download, it runs a GDAL cutline warp (`gdal.Warp` with
 `cutlineDSName` set to your original AOI file) that clips the raster
 to the exact polygon boundary and burns in a real NoData value
 (-9999 by default). This is what `_on_add_raster_to_qgis` in the UI
-actually loads into the map — the raw rectangular download is kept
+actually loads into the map the raw rectangular download is kept
 alongside it as `RAM_<name>_raw.tif` in case you want to compare or
 debug. The Drive-export fallback does **not** get this treatment
 automatically (it's an async file you retrieve from Drive yourself);
