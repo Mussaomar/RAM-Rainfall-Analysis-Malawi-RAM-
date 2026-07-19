@@ -6,7 +6,7 @@ Python API.
 
 ## What it does
 
-Point extraction*,pick a point on the map (or type lon/lat),
+Point extraction,pick a point on the map (or type lon/lat),
 get a daily/monthly/annual CHIRPS rainfall time series, export to CSV.
 AOI / district analysis,load your own boundary (shapefile or
 GeoPackage: a district, a watershed, a hand-drawn polygon the
