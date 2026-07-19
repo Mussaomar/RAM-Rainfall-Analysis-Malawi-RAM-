@@ -1,4 +1,4 @@
-# RAM - Rainfall Analysis Malawi (QGIS plugin)
+RAM - Rainfall Analysis Malawi (QGIS plugin)
 
 Rainfall extraction, SPI/RAI/PCI indices, and trend analysis for
 Malawi, using CHIRPS Daily precipitation via the Google Earth Engine
@@ -6,34 +6,34 @@ Python API.
 
 ## What it does
 
-- **Point extraction** — pick a point on the map (or type lon/lat),
-  get a daily/monthly/annual CHIRPS rainfall time series, export to CSV.
-- **AOI / district analysis** — load your own boundary (shapefile or
-  GeoPackage: a district, a watershed, a hand-drawn polygon — the
-  plugin does not bundle a boundary layer, so bring your own), get
-  zonal statistics (mean/min/max/std/sum) per period, export CSV.
-- **Rainfall raster, straight into QGIS** — total or mean rainfall
-  over the AOI, downloaded synchronously from Earth Engine and added
-  directly as a layer in the QGIS map canvas — no Google Drive step,
-  no waiting on an export task. Choose native (~5.5 km), 1 km, 500 m,
-  or 250 m (the last three bicubic-resampled from the native grid,
-  not a truer observation). A Google Drive export is kept as a
-  fallback button for AOIs/date-ranges too large for direct download
-  (roughly >32-50 MB), since that path has no size ceiling.
-- **Climate indices** — SPI (1/3/6/12/24-month), RAI (annual), PCI
-  (annual), computed from either a CHIRPS extraction or an imported
-  ground-station monthly CSV, so the two can also be plotted together.
-- **Trend analysis** — Mann-Kendall test, Sen's slope, OLS regression,
+Point extraction*,pick a point on the map (or type lon/lat),
+get a daily/monthly/annual CHIRPS rainfall time series, export to CSV.
+AOI / district analysis,load your own boundary (shapefile or
+GeoPackage: a district, a watershed, a hand-drawn polygon the
+ plugin does not bundle a boundary layer, so bring your own), get
+zonal statistics (mean/min/max/std/sum) per period, export CSV.
+Rainfall raster, straight into QGIS,total or mean rainfall
+over the AOI, downloaded synchronously from Earth Engine and added
+directly as a layer in the QGIS map canvas  no Google Drive step,
+no waiting on an export task. Choose native (~5.5 km), 1 km, 500 m,
+ or 250 m (the last three bicubic-resampled from the native grid,
+ not a truer observation). A Google Drive export is kept as a
+fallback button for AOIs/date-ranges too large for direct download
+(roughly >32-50 MB), since that path has no size ceiling.
+Climate indices ,SPI (1/3/6/12/24-month), RAI (annual), PCI
+(annual), computed from either a CHIRPS extraction or an imported
+ ground-station monthly CSV, so the two can also be plotted together.
+Trend analysis, Mann-Kendall test, Sen's slope, OLS regression,
   moving averages, on the annual series.
 
-## Install
+ Install
 
 1. Copy this folder into your QGIS plugins directory:
    - Linux: `~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/`
    - Windows: `%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins\`
    - macOS: `~/Library/Application Support/QGIS/QGIS3/profiles/default/python/plugins/`
 2. Install dependencies into QGIS's own Python (see `requirements.txt`
-   for the exact commands per OS — QGIS plugins run inside QGIS's
+   for the exact commands per OS  QGIS plugins run inside QGIS's
    bundled interpreter, not your regular system Python).
 3. In QGIS: Plugins -> Manage and Install Plugins -> Installed, enable
    "RAM - Rainfall Analysis Malawi".
@@ -43,7 +43,7 @@ Python API.
    "Initialize Earth Engine" — the first run opens a browser window
    for one-time OAuth sign-in and then caches the token.
 
-## Raster workflow: direct-to-QGIS vs Drive fallback
+ Raster workflow: direct to QGIS vs Drive fallback
 
 `gee/chirps.py` has two export functions:
 
@@ -111,7 +111,7 @@ exact-shape result.
   (e.g. correlation, bias) for your study area rather than relying on
   literature validation figures from elsewhere.
 
-## Project structure
+ Project structure
 
 ```
 RAM/
@@ -133,9 +133,9 @@ RAM/
     └── icon.png                 # cloud-with-falling-raindrops icon
 ```
 
-## Known limitations / next steps
+ limitations / next steps
 
-- No bundled Malawi boundary layer by design — you supply the AOI
+- No bundled Malawi boundary layer by design you supply the AOI
   file each session; consider a "recent files" list if this gets
   repetitive.
 - Direct raster download has the ~32-50 MB ceiling described above;
@@ -148,6 +148,6 @@ RAM/
   the code skips fitting when fewer than 4 observations are available
   for a given month, which for CHIRPS's 1981–present record should
   rarely bind unless your date range is deliberately narrow.
-- No automated test suite yet — recommended before relying on this for
+- No automated test suite yet recommended before relying on this for
   a submitted dissertation figure: unit-test `analysis/indices.py` and
   `analysis/trends.py` against a small hand-computed example.
