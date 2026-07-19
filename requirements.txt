@@ -1,0 +1,14 @@
+# Install these into QGIS's own Python environment, not a separate
+# system Python -- QGIS plugins run inside QGIS's interpreter.
+#
+# Windows (OSGeo4W shell):   python -m pip install -r requirements.txt
+# macOS (QGIS.app bundled python):
+#   /Applications/QGIS.app/Contents/MacOS/bin/python3 -m pip install -r requirements.txt
+# Linux (system QGIS usually shares the system python3):
+#   python3 -m pip install -r requirements.txt
+
+earthengine-api>=0.1.400
+pandas>=1.5
+numpy>=1.23
+scipy>=1.9
+matplotlib>=3.6
