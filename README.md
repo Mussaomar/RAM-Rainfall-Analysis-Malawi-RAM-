@@ -47,7 +47,7 @@ Trend analysis, Mann-Kendall test, Sen's slope, OLS regression,
 
 `gee/chirps.py` has two export functions:
 
-- `export_aoi_raster_to_qgis()` — the default. Uses
+- `export_aoi_raster_to_qgis()` : the default. Uses
   `ee.Image.getDownloadURL` to fetch a GeoTIFF synchronously and save
   it to a temp file; the UI then loads that file with `QgsRasterLayer`
   and adds it to `QgsProject.instance()`. Fast, no Drive account
@@ -55,7 +55,7 @@ Trend analysis, Mann-Kendall test, Sen's slope, OLS regression,
   own limit on that endpoint) — fine for a single Malawi district at
   1 km over a multi-year period, but will fail for e.g. the whole
   country at 250 m over many years.
-- `export_aoi_raster_to_drive()` — kept as a fallback for AOI/
+ `export_aoi_raster_to_drive()` :kept as a fallback for AOI/
   resolution/date-range combinations that exceed that ceiling. Runs
   as an asynchronous GEE batch task and lands in the user's Google
   Drive; the plugin reports the task ID and a link to
@@ -66,7 +66,7 @@ If you hit the size ceiling on the direct path, either reduce the
 resolution, shorten the date range, or use the Drive fallback and
 then drag the resulting file into QGIS once it lands.
 
-### Why the raster is clipped to the exact AOI shape, not just its box
+ Why the raster is clipped to the exact AOI shape, not just its box
 
 Earth Engine's `Image.clip()` masks pixels outside the AOI *on the
 server*, but that mask doesn't reliably survive the `getDownloadURL`
@@ -89,25 +89,7 @@ if you go that route, use QGIS's own **Raster → Extraction → Clip
 Raster by Mask Layer** tool against the same AOI file to get the same
 exact-shape result.
 
- Notes for dissertation use
 
-
-├── __init__.py
-├── ram_plugin.py               # plugin class (toolbar/menu entry)
-├── requirements.txt
-├── gee/
-│   ├── authentication.py       # EE init/OAuth handling
-│   ├── chirps.py               # point extraction, zonal stats, raster export (direct + Drive fallback)
-│   └── raster_mask.py          # local GDAL cutline clip to exact AOI shape
-├── analysis/
-│   ├── indices.py               # SPI, RAI, PCI (+ ground CSV loader)
-│   ├── trends.py                # Mann-Kendall, Sen's slope, OLS, moving avg
-│   └── graphs.py                # matplotlib chart generation
-├── ui/
-│   └── main_dialog.py           # tabbed PyQt5 dialog
-└── resources/
-    └── icon.png                 # cloud-with-falling-raindrops icon
-```
 
  limitations / next steps
 
