@@ -97,12 +97,12 @@ No bundled Malawi boundary layer by design you supply the AOI
   file each session; consider a "recent files" list if this gets
   repetitive.
 Direct raster download has the ~32-50 MB ceiling described above;
-  the Drive fallback does not poll for completion — check
+  the Drive fallback does not poll for completion  check
   https://code.earthengine.google.com/tasks or extend
   `chirps.export_aoi_raster_to_drive` with a polling loop if you want
   in-app status.
 SPI is fit per calendar month across the full record; very short
-  records (a handful of years) will produce statistically shaky fits —
+  records (a handful of years) will produce statistically shaky fits 
   the code skips fitting when fewer than 4 observations are available
   for a given month, which for CHIRPS's 1981–present record should
   rarely bind unless your date range is deliberately narrow.
