@@ -8,10 +8,9 @@ email=change_mussa,umali@cunima.ac.mw
 
 about=Extracts CHIRPS rainfall for a point or an AOI (district/custom polygon loaded from a user shapefile/GeoPackage) via the Google Earth Engine Python API. Exports point time series to CSV, and loads AOI rainfall directly as a raster layer in the QGIS map canvas (with an optional Google Drive export for AOIs too large for direct download). Computes SPI (1/3/6/12), RAI, and PCI, and runs Mann-Kendall/Sen's-slope trend analysis. Also accepts a user-supplied CSV of ground-station monthly rainfall for side-by-side comparison with CHIRPS.
 
-tracker=https://github.com/your-org/ram-rainfall-malawi/issues
-repository=https://github.com/your-org/ram-rainfall-malawi
-homepage=https://github.com/your-org/ram-rainfall-malawi
-(tracker//repository//homepag
+tracker=https://github.com/Mussaomar/RAM-Rainfall-Analysis-Malawi-RAM-/issues
+repository=https://github.com/Mussaomar/RAM-Rainfall-Analysis-Malawi-RAM-
+homepage=https://github.com/Mussaomar/RAM-Rainfall-Analysis-Malawi-RAM-
 
 category=Analysis
 tags=rainfall,CHIRPS,Malawi,Google Earth Engine,SPI,RAI,PCI,Mann-Kendall,climate,drought,RAM
